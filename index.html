@@ -3,41 +3,208 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ずんだもんの裏読み速報 / uraread-news-shorts</title>
+<title>ずんだもんの裏読み速報 | 毎日1分・ニュースの「裏」を対談で</title>
+<meta name="description" content="ずんだもんと四国めたんが、毎日のニュースの「裏」を約1分の対談で解説するショート動画チャンネル「ずんだもんの裏読み速報」の公式サイトです。">
 <style>
-  :root { color-scheme: light dark; }
-  body { font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-         max-width: 760px; margin: 0 auto; padding: 2.5rem 1.25rem; line-height: 1.75; color: #1a1a1a; }
-  h1 { font-size: 1.6rem; line-height: 1.3; }
-  h2 { font-size: 1.15rem; margin-top: 2rem; }
-  a { color: #d6336c; }
-  .muted { color: #666; font-size: .9rem; }
-  nav a { margin-right: 1rem; }
-  hr { border: none; border-top: 1px solid #ddd; margin: 2rem 0; }
+  :root{
+    --bg:#fffdf9; --fg:#1b1b1f; --muted:#5b5b66; --accent:#11998e; --accent2:#38ef7d;
+    --pink:#d6336c; --card:#ffffff; --line:#e7e3da; --maxw:1040px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+       color:var(--fg);background:var(--bg);line-height:1.8;}
+  a{color:var(--pink);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem}
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:10;background:rgba(255,253,249,.92);backdrop-filter:blur(6px);
+             border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-weight:800;font-size:1.05rem;letter-spacing:.02em}
+  .brand small{display:block;font-weight:500;font-size:.66rem;color:var(--muted);letter-spacing:.08em}
+  .nav nav a{color:var(--fg);margin-left:1.3rem;font-size:.92rem}
+  @media(max-width:680px){.nav nav{display:none}}
+  /* hero */
+  .hero{background:linear-gradient(135deg,#0f2027,#203a43 55%,#2c5364);color:#fff;padding:4.5rem 0 4rem}
+  .hero h1{font-size:2.4rem;line-height:1.25;margin:.2rem 0 1rem}
+  .hero p.lead{font-size:1.15rem;max-width:640px;color:#d7e6e3;margin:0 0 1.8rem}
+  .badge{display:inline-block;background:rgba(56,239,125,.18);color:#9bf6c4;border:1px solid rgba(56,239,125,.4);
+         padding:.25rem .8rem;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.04em}
+  .btns a{display:inline-block;margin:.3rem .6rem .3rem 0;padding:.7rem 1.4rem;border-radius:10px;font-weight:700;font-size:.95rem}
+  .btn-y{background:#ff0033;color:#fff}
+  .btn-t{background:#fff;color:#111}
+  .btn-y:hover,.btn-t:hover{opacity:.9;text-decoration:none}
+  /* sections */
+  section{padding:3.4rem 0;border-bottom:1px solid var(--line)}
+  h2.sec{font-size:1.6rem;margin:0 0 .4rem}
+  .sub{color:var(--muted);margin:0 0 2rem}
+  .grid{display:grid;gap:1.2rem}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.g3,.g2{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.3rem}
+  .card h3{margin:.2rem 0 .5rem;font-size:1.08rem}
+  .card .ic{font-size:1.6rem}
+  .steps{counter-reset:s;display:grid;gap:1rem}
+  .steps li{list-style:none;position:relative;padding-left:3rem}
+  .steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;
+    width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .chars{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+  @media(max-width:680px){.chars{grid-template-columns:1fr}}
+  .faq dt{font-weight:700;margin-top:1.2rem}
+  .faq dd{margin:.3rem 0 0;color:var(--fg)}
+  .tags span{display:inline-block;background:#eef6f4;border:1px solid var(--line);color:#26645c;
+    padding:.25rem .7rem;border-radius:999px;font-size:.85rem;margin:.2rem .3rem .2rem 0}
+  footer{padding:2.6rem 0;color:var(--muted);font-size:.9rem}
+  footer a{color:var(--muted)}
+  .callout{background:#fff8e6;border:1px solid #f3e3b3;border-radius:12px;padding:1.1rem 1.2rem;color:#6b5a1e}
 </style>
 </head>
 <body>
-<h1>ずんだもんの裏読み速報<br><span class="muted">uraread-news-shorts</span></h1>
 
-<p>本サイトは、ニュース解説ショート動画チャンネル「ずんだもんの裏読み速報」の公式情報ページです。
-毎日のニュースの「裏」を約1分で、ずんだもんと四国めたんが対談形式で解説するAI生成の合成コンテンツを、
-YouTube ShortsおよびTikTokへ自動投稿しています。</p>
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">ずんだもんの裏読み速報<small>URAREAD NEWS SHORTS</small></div>
+    <nav>
+      <a href="#about">サイト概要</a>
+      <a href="#features">特徴</a>
+      <a href="#how">配信の流れ</a>
+      <a href="#watch">視聴する</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
 
-<h2>配信チャンネル</h2>
-<ul>
-  <li>YouTube: <a href="https://www.youtube.com/@zunda-uraread">@zunda-uraread</a></li>
-  <li>TikTok: @zunda_uraread</li>
-</ul>
+<div class="hero">
+  <div class="wrap">
+    <span class="badge">毎日 朝7時 / 夜7時 更新</span>
+    <h1>ニュースの「裏」を、<br>1分の対談で。</h1>
+    <p class="lead">「ずんだもんの裏読み速報」は、ずんだもんと四国めたんが、その日のニュースの背景・利害・見落とされがちな論点を約1分の対談形式でやさしく解説するショート動画チャンネルです。</p>
+    <div class="btns">
+      <a class="btn-y" href="https://www.youtube.com/@zunda-uraread">▶ YouTube で見る</a>
+      <a class="btn-t" href="https://www.tiktok.com/@zunda_uraread">TikTok で見る</a>
+    </div>
+  </div>
+</div>
 
-<h2>このツールについて</h2>
-<p>投稿は <code>uraread-news-shorts-auto</code> という個人運用の自動投稿ツールにより行われます。
-本ツールは運営者自身のアカウントへ動画を投稿する目的のみで、TikTok Content Posting API / Login Kit を利用します。</p>
+<section id="about">
+  <div class="wrap">
+    <h2 class="sec">サイト概要</h2>
+    <p class="sub">本サイトは「ずんだもんの裏読み速報」の公式サイトです。</p>
+    <p>日々流れていくニュースは、見出しだけでは「結局どういうことなのか」「誰が得をして誰が困るのか」が分かりにくいものです。本チャンネルは、そうしたニュースの<strong>「裏側」=背景・文脈・利害関係</strong>を、専門用語をかみ砕いて1分で掴めるように再構成し、ずんだもんと四国めたんの対談形式でお届けします。通勤・休憩のスキマ時間に、その日の出来事の「読み筋」がひとつ増える——そんな場所を目指しています。</p>
+    <p>扱うテーマは経済・国際・テクノロジーを中心に、生活に関わる話題まで幅広く取り上げます。</p>
+    <div class="tags">
+      <span>#経済ニュース</span><span>#国際情勢</span><span>#テクノロジー</span>
+      <span>#マーケット</span><span>#エネルギー</span><span>#ニュース解説</span>
+    </div>
+  </div>
+</section>
 
-<hr>
-<nav>
-  <a href="./privacy.html">プライバシーポリシー</a>
-  <a href="./terms.html">利用規約</a>
-</nav>
-<p class="muted">© 2026 ずんだもんの裏読み速報</p>
+<section id="features">
+  <div class="wrap">
+    <h2 class="sec">特徴</h2>
+    <p class="sub">「短く・深く・毎日」を両立させる3つのこだわり。</p>
+    <div class="grid g3">
+      <div class="card"><div class="ic">⏱️</div><h3>1分で要点</h3>
+        <p>1本あたり約1分。3行まとめ＋対談で、忙しくても要点と「裏」がすっと入ります。</p></div>
+      <div class="card"><div class="ic">🔍</div><h3>“裏読み”の視点</h3>
+        <p>表面的な事実だけでなく、背景・利害・反対意見まで触れ、鵜呑みにしない見方を提示します。</p></div>
+      <div class="card"><div class="ic">🗓️</div><h3>毎日更新</h3>
+        <p>朝7時・夜7時に新着。その日のニュースに合わせて継続的に配信します。</p></div>
+      <div class="card"><div class="ic">🗣️</div><h3>対談形式</h3>
+        <p>ずんだもんの素朴な疑問に四国めたんが切り込む掛け合いで、難しい話も分かりやすく。</p></div>
+      <div class="card"><div class="ic">📚</div><h3>出典を明記</h3>
+        <p>各動画の説明欄に参照した報道・一次情報の出典を記載し、さらに調べる入口を用意します。</p></div>
+      <div class="card"><div class="ic">📱</div><h3>マルチ配信</h3>
+        <p>YouTube Shorts と TikTok の両方で、同じ内容を最適な縦型フォーマットで配信します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2 class="sec">配信の流れ</h2>
+    <p class="sub">1本の動画ができるまで。</p>
+    <ol class="steps">
+      <li><strong>ニュースを選ぶ</strong> — その日の報道から、背景に「読みどころ」のある話題を厳選します。</li>
+      <li><strong>裏側をリサーチ</strong> — 一次情報や複数の報道を突き合わせ、利害・文脈・異論を整理します。</li>
+      <li><strong>対談台本に再構成</strong> — 要点を3行にまとめ、ずんだもんと四国めたんの掛け合い台本にします。</li>
+      <li><strong>動画化して配信</strong> — 音声合成とキャラクター演出で1分の縦型動画にし、各チャンネルへ公開します。</li>
+    </ol>
+  </div>
+</section>
+
+<section id="characters">
+  <div class="wrap">
+    <h2 class="sec">登場キャラクター</h2>
+    <p class="sub">2人の掛け合いでお届けします。</p>
+    <div class="chars">
+      <div class="card"><h3>ずんだもん</h3>
+        <p>聞き手役。「それってどういうことなのだ?」と素朴な疑問をぶつけ、視聴者の“分からない”を代弁します。</p></div>
+      <div class="card"><h3>四国めたん</h3>
+        <p>解説役。ニュースの裏側を一刀両断。ときに「ぬか喜びは禁物」と冷静なツッコミを入れます。</p></div>
+    </div>
+    <p class="muted" style="margin-top:1.2rem">キャラクターは「東北ずん子・ずんだもんプロジェクト」のガイドラインに準拠して利用し、音声合成には VOICEVOX（ずんだもん／四国めたん）を使用しています。</p>
+  </div>
+</section>
+
+<section id="watch">
+  <div class="wrap">
+    <h2 class="sec">視聴する</h2>
+    <p class="sub">お好きなプラットフォームでフォローしてください。</p>
+    <div class="grid g2">
+      <div class="card"><div class="ic">▶️</div><h3>YouTube</h3>
+        <p>チャンネル: <a href="https://www.youtube.com/@zunda-uraread">@zunda-uraread</a><br>Shorts で毎日配信中。</p></div>
+      <div class="card"><div class="ic">🎵</div><h3>TikTok</h3>
+        <p>アカウント: <a href="https://www.tiktok.com/@zunda_uraread">@zunda_uraread</a><br>縦型ショートで配信。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ai">
+  <div class="wrap">
+    <h2 class="sec">AI 生成コンテンツについて</h2>
+    <div class="callout">
+      本チャンネルの動画は、AI による台本生成・音声合成を用いた<strong>合成コンテンツ</strong>です。各動画にはその旨を明示しています。情報の正確性には努めていますが、内容は情報提供・娯楽を目的とし、投資・医療・法律等の専門的助言を構成するものではありません。最終的な判断はご自身で一次情報をご確認ください。
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="sec">よくある質問</h2>
+    <dl class="faq">
+      <dt>Q. どのくらいの頻度で更新されますか?</dt>
+      <dd>A. 原則として毎日、朝7時と夜7時の更新を予定しています。</dd>
+      <dt>Q. 動画はどこで見られますか?</dt>
+      <dd>A. YouTube Shorts（@zunda-uraread）と TikTok（@zunda_uraread）で配信しています。</dd>
+      <dt>Q. 情報の出典は分かりますか?</dt>
+      <dd>A. 各動画の説明欄に、参照した報道・一次情報の出典を記載しています。</dd>
+      <dt>Q. 内容は中立ですか?</dt>
+      <dd>A. 特定の立場に偏らないよう、背景・利害・反対意見にも触れるよう努めています。最終判断はご自身でお願いします。</dd>
+      <dt>Q. リクエストや指摘はできますか?</dt>
+      <dd>A. 下記のお問い合わせ先までご連絡ください。</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2 class="sec">お問い合わせ</h2>
+    <p class="sub">ご意見・ご指摘・取材等はこちらへ。</p>
+    <p>メール: <a href="mailto:himenokaito0123@gmail.com">himenokaito0123@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><a href="./privacy.html">プライバシーポリシー</a> ・ <a href="./terms.html">利用規約</a></p>
+    <p>© 2026 ずんだもんの裏読み速報 (uraread-news-shorts). All rights reserved.</p>
+  </div>
+</footer>
+
 </body>
 </html>
